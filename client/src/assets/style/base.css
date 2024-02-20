@@ -24,4 +24,8 @@
     max-width: 1255px;
     padding: 0 15px;
     overflow: hidden;
+    margin: 0 auto;
+}
+.cursor-pointer {
+    cursor: pointer;
 }
