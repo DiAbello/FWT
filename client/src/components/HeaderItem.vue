@@ -3,10 +3,10 @@
     <div class="container">
       <div class="header__body">
         <div class="header__logo cursor-pointer">
-          <img :src="store.themeState === 'dark' ? logoUrl + 'logo-white.svg' : logoUrl + 'logo-dark.svg'" alt="">
+          <img :src="name === names.dark ? logoUrl + 'logo-white.svg' : logoUrl + 'logo-dark.svg'" alt="">
         </div>
         <div class="header__theme">
-          <img :src="store.themeState === 'dark' ? iconUrl + 'light_icon.svg' : iconUrl + 'dark_icon.svg'" alt="" :class="{background: store.themeState === 'dark', defaultPadding: true, 'cursor-pointer': true}" @click="store.changeThemeState()">
+          <img :src="name === names.dark ? iconUrl + 'light_icon.svg' : iconUrl + 'dark_icon.svg'" alt="" :class="{background: name === names.dark, defaultPadding: true, 'cursor-pointer': true}" @click="toggle">
         </div>
       </div>
     </div>
@@ -14,11 +14,13 @@
 </template>
 
 <script setup lang="ts">
-import { useStore } from '@/stores/store';
+import themeProvider from "@/helpers/setThemeSettings";
 
-const store = useStore()
 const iconUrl = '/src/assets/icons/'
 const logoUrl = '/src/assets/logo/'
+
+const {toggle, name, names} = themeProvider()
+
 
 </script>
 

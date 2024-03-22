@@ -1,30 +1,21 @@
 import { defineStore } from "pinia";
-import type { Theme } from "@/types/theme";
-import type { ThemeSettings} from "@/types/mainColor";
-import setThemeSettings from "@/helpers/setThemeSettings";
+import type {Painting} from "@/types/Painting";
+import $api from "@/API/http";
 
 export const useStore = defineStore('store', {
   state() {
       return {
-        themeState: 'dark' as Theme,
-        themeSettings: {
-            settings : {
-                background_color: "var(--primary-black)",
-                color: "var(--primary-light)",
-                accent_color: "var(--accent-gold)"
-            }
-        } as ThemeSettings
+            paintings: [] as Painting[]
       }
   },
   actions: {
-    changeThemeState() {
-        if(this.themeState === 'dark') {
-            this.themeState = 'white'
-            this.themeSettings = setThemeSettings(this.themeState)
-        } else {
-            this.themeState = 'dark'
-            this.themeSettings = setThemeSettings(this.themeState)
+        async setPaintings() {
+            const paintings = await $api.get('/paintings?_limit=6', )
+            try {
+                this.paintings = paintings.data
+            } catch (error) {
+                console.log(error)
+            }
         }
-    }
   }
 })

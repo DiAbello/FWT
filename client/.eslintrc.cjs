@@ -10,6 +10,10 @@ module.exports = {
     '@vue/eslint-config-typescript',
     '@vue/eslint-config-prettier/skip-formatting'
   ],
+  "rules": {
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": ["error"]
+  },
   parserOptions: {
     ecmaVersion: 'latest'
   }

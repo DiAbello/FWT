@@ -1,7 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500&display=swap');
 
-:root {
+[data-theme='white'] {
+    --primary-text: #121212;
+    --primary-background: #FFFFFF;
+
+    --primary-white: #FFFFFF;
+    --primary-black: #121212;
+    --primary-light-gray: #DEDEDE;
+    --primary-dark-gray: #575757;
+
+    --secondary-white: #FCFCFC;
+    --secondary-black: #1A1818;
+    --secondary-gray: #9C9C9C;
+
+    --accent-red: #9B4B4B;
+    --accent-gold: #AB8956;
+}
+
+[data-theme='dark'] {
+    --primary-text: #DEDEDE;
+    --primary-background: #121212;
+
     --primary-white: #FFFFFF;
     --primary-black: #121212;
     --primary-light-gray: #DEDEDE;
