@@ -4,6 +4,16 @@
 [data-theme='white'] {
     --primary-text: #121212;
     --primary-background: #FFFFFF;
+    --inputBackdround: #FFFFFF;
+    --inputBorder: #DEDEDE;
+    --inputBorderFocus: #575757;
+    --sortBackground: transparent;
+    --accentText: #9B4B4B;
+    --filterIcon: #575757;
+    --clearBtn: #9C9C9C;
+    --selectBack: #FFFFFF;
+    --selectBorder: #DEDEDE;
+    --selectText: #9C9C9C;
 
     --primary-white: #FFFFFF;
     --primary-black: #121212;
@@ -21,6 +31,16 @@
 [data-theme='dark'] {
     --primary-text: #DEDEDE;
     --primary-background: #121212;
+    --inputBackdround: #1A1818;
+    --inputBorder: transparent;
+    --inputBorderFocus: #DEDEDE;
+    --sortBackground: #1A1818;
+    --accentText: #AB8956;
+    --filterIcon: #DEDEDE;
+    --clearBtn:#575757;
+    --selectBack: #1A1818;
+    --selectBorder: transparent;
+    --selectText: #575757;
 
     --primary-white: #FFFFFF;
     --primary-black: #121212;
@@ -38,6 +58,7 @@
 #app {
     min-height: 100%;
     font-family: 'Inter', sans-serif;
+    overflow: hidden;
     /*font-family: 'Cormorant SC', serif;*/
 }
 .container {

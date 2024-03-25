@@ -3,10 +3,10 @@
     <div class="container">
       <div class="header__body">
         <div class="header__logo cursor-pointer">
-          <img :src="name === names.dark ? logoUrl + 'logo-white.svg' : logoUrl + 'logo-dark.svg'" alt="">
+          <img :src="name === names.dark ? themeIconUrl.logoUrl + 'logo-white.svg' : themeIconUrl.logoUrl + 'logo-dark.svg'" alt="">
         </div>
         <div class="header__theme">
-          <img :src="name === names.dark ? iconUrl + 'light_icon.svg' : iconUrl + 'dark_icon.svg'" alt="" :class="{background: name === names.dark, defaultPadding: true, 'cursor-pointer': true}" @click="toggle">
+          <img :src="name === names.dark ? themeIconUrl.iconUrl + 'light_icon.svg' : themeIconUrl.iconUrl + 'dark_icon.svg'" alt="" :class="{background: name === names.dark, defaultPadding: true, 'cursor-pointer': true}" @click="toggle">
         </div>
       </div>
     </div>
@@ -16,10 +16,12 @@
 <script setup lang="ts">
 import themeProvider from "@/helpers/setThemeSettings";
 
-const iconUrl = '/src/assets/icons/'
-const logoUrl = '/src/assets/logo/'
+enum themeIconUrl {
+  iconUrl = '/src/assets/icons/',
+  logoUrl = '/src/assets/logo/'
+}
 
-const {toggle, name, names} = themeProvider()
+const { toggle, name, names } = themeProvider()
 
 
 </script>

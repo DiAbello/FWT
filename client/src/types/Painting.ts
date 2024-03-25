@@ -1,8 +1,10 @@
 export interface Painting {
+    author: string,
+    location: string,
     authorId: number,
     created: string,
     id: number,
-    imgUrl: string,
-    location: number,
+    imageUrl: string,
+    locationId: number,
     name: string
 }

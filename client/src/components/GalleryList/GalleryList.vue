@@ -15,14 +15,23 @@ import GalleryItem from "@/components/GalleryItem/GalleryItem.vue";
 const store = useStore()
 store.setPaintings()
 
+
 </script>
 
 <style scoped lang="scss">
 .gallery {
+  padding: 20px 0;
   &__list {
     display: flex;
     flex-wrap: wrap;
+    //justify-content: space-between;
     gap: 32px;
+    @media (max-width: 768px) {
+      gap: 24px;
+    }
+    @media (max-width: 320px) {
+      gap: 20px;
+    }
   }
 }
 </style>
