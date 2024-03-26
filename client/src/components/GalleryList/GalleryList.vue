@@ -2,7 +2,7 @@
   <div class="gallery">
     <div class="container">
       <div class="gallery__list">
-        <GalleryItem v-for="painting in store.paintings" :key="painting.id" :painting="painting"/>
+        <GalleryItem v-for="painting in store.getSearchedAndFilteredPaintings" :key="painting.id" :painting="painting"/>
       </div>
     </div>
   </div>
@@ -15,7 +15,6 @@ import GalleryItem from "@/components/GalleryItem/GalleryItem.vue";
 const store = useStore()
 store.setPaintings()
 
-
 </script>
 
 <style scoped lang="scss">
@@ -24,7 +23,6 @@ store.setPaintings()
   &__list {
     display: flex;
     flex-wrap: wrap;
-    //justify-content: space-between;
     gap: 32px;
     @media (max-width: 768px) {
       gap: 24px;

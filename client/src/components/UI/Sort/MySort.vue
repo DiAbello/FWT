@@ -10,12 +10,14 @@
           <div class="filters__body">
             <DropdownItem
               sort-title='Artist'
+              :dropdown-options="store.sortArtists"
             />
             <DropdownItem
                 sort-title='Location'
+                :dropdown-options="store.sortLocations"
             />
-            <DropdownItem
-                sort-title='Years'
+            <InputRange
+                sort-title="Years"
             />
           </div>
         </div>
@@ -36,11 +38,20 @@
 import themeProvider from "@/helpers/setThemeSettings";
 import {EnumLinksSort} from "@/components/UI/Sort/EnumLinksSort";
 import {FilterIconsLinks} from "@/components/Filters/filter-icons-links";
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
 import DropdownItem from "@/components/Filters/DropdownList/DropdownItem.vue";
+import { useStore} from "@/stores/store";
+import InputRange from "@/components/Filters/InputRange/InputRange.vue";
 
+
+const store = useStore()
 const { name, names } = themeProvider()
 const isSortVisible = ref<boolean>(false)
+
+onMounted(() => {
+  store.setArtists()
+  store.setLocations()
+})
 </script>
 
 <style scoped lang="scss">
@@ -79,19 +90,36 @@ const isSortVisible = ref<boolean>(false)
       display: flex;
       flex-direction: column;
       height: 100vh;
+      @media (max-width: 768px) {
+        margin: 0 24px 0 24px;
+      }
+      @media (max-width: 425px) {
+        margin: 0 20px 0 20px;
+      }
     }
     &__close {
       text-align: right;
       margin-top: 60px;
+      @media (max-width: 768px) {
+        margin-top: 24px;
+      }
+      @media (max-width: 425px) {
+        margin-top: 20px;
+      }
     }
     &__filters {
       max-width: 320px;
       margin-top: 100px;
       .filters {
+
         &__body {
           display: flex;
           flex-direction: column;
           gap: 32px;
+          max-height: 100px;
+          @media (max-width: 1024px) {
+            max-height: 10px;
+          }
         }
       }
     }

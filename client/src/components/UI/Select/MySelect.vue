@@ -12,6 +12,7 @@
       v-for="option in options"
       :key="option.value"
       :value="option.value"
+      class="option"
     >
       {{option.name}}
     </option>
@@ -19,10 +20,11 @@
 </template>
 
 <script setup lang="ts">
-import type { PropType } from "vue";
+import { type PropType, ref } from "vue";
 import type { Options } from "@/components/UI/Select/Options";
 import themeProvider from "@/helpers/setThemeSettings";
-const { name, names } = themeProvider()
+
+const { name } = themeProvider()
 
 const props = defineProps({
   modelValue: {
@@ -37,7 +39,7 @@ const props = defineProps({
     required: true
   }
 })
-const modelValue = props.modelValue
+const modelValue = ref(props?.modelValue)
 
 const emits = defineEmits([
     'update:modelValue'
@@ -46,11 +48,20 @@ const emits = defineEmits([
 
 <style scoped lang="scss">
 .select {
+  display: none;
+  transition: all 0.3s;
   background-color: var(--selectBack);
   border: 1px solid var(--selectBorder);
   color: var(--selectText);
   width: 100%;
   padding: 8px 0 8px 16px;
   border-radius: 4px;
+  transform: scale(0);
+}
+.option {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 19.6px;
+  padding: 8px 0 8px 16px;
 }
 </style>

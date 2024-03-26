@@ -9,20 +9,21 @@
       </div>
     </div>
     <MySelect
-        v-model="selectedSort"
         :options="dropdownOptions"
-        v-if="isDropdownActive"
+        :class="{active: isDropdownActive}"
         :sort-title="sortTitle"
+        v-model="selectedSort"
     />
   </div>
 </template>
 
 <script setup lang="ts">
 import themeProvider from "@/helpers/setThemeSettings";
-import {type PropType, ref} from "vue";
+import {type PropType, ref, watch} from "vue";
 import { FilterIconsLinks } from "@/components/Filters/filter-icons-links";
 import MySelect from "@/components/UI/Select/MySelect.vue";
 import type {Options} from "@/components/UI/Select/Options";
+import {useStore} from "@/stores/store";
 
 const props = defineProps({
   sortTitle: {
@@ -34,17 +35,31 @@ const props = defineProps({
     required: true
   }
 })
-const { name, names } = themeProvider()
+const store = useStore()
+const { name } = themeProvider()
 const isDropdownActive = ref(false)
-const selectedSort = ref('')
+const selectedSort = ref<string>('')
+
+watch(selectedSort, () => {
+  if(props.sortTitle?.toLowerCase() === 'artist') {
+    store.selectedOptions.author = selectedSort as unknown as string
+  } else {
+    store.selectedOptions.location = selectedSort as unknown as string
+  }
+})
+
+const emits = defineEmits([
+  'update:modelValue'
+])
 </script>
 
 <style scoped lang="scss">
 .iconColor {
   color: var(--filterIcon)
 }
-.filter__item {
-
+.active {
+  transform: scale(1);
+  display: block !important;
 }
 .item {
   display: flex;

@@ -16,10 +16,13 @@ import MyInput from "@/components/UI/Input/MyInput.vue";
 import MySort from "@/components/UI/Sort/MySort.vue";
 import { useStore } from "@/stores/store";
 import {ref, watch} from "vue";
-import paintingsProvider from "@/components/GalleryList/search-filter-list";
 
 const store = useStore()
 const paintingTitle = ref('')
+
+watch(paintingTitle, () => {
+  store.searchQuery = paintingTitle.value as unknown as string
+})
 
 </script>
 
