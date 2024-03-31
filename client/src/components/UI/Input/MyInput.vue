@@ -36,18 +36,18 @@ const props = defineProps({
     type: String,
     required: true
   }
-})
-const {name, names} = themeProvider()
-const isFocused = ref(false)
+});
+const {  name, names  } = themeProvider();
+const isFocused = ref(false);
 
 const emits = defineEmits([
   'update:modelValue'
 ])
 
 function clearInput(input: HTMLInputElement) {
-  const modInput = input
-  modInput.value = ''
-  emits('update:modelValue', input.value)
+  const modInput = input;
+  modInput.value = '';
+  emits('update:modelValue', input.value);
 }
 
 </script>

@@ -17,11 +17,11 @@ import MySort from "@/components/UI/Sort/MySort.vue";
 import { useStore } from "@/stores/store";
 import { ref, watch } from "vue";
 
-const store = useStore()
-const paintingTitle = ref('')
+const store = useStore();
+const paintingTitle = ref('');
 
 watch(paintingTitle, () => {
-  store.searchQuery = paintingTitle.value as unknown as string
+  store.searchQuery = paintingTitle.value as unknown as string;
 })
 
 </script>

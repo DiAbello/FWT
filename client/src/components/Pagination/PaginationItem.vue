@@ -37,14 +37,13 @@
 import themeProvider from "@/helpers/setThemeSettings";
 import { useStore } from "@/stores/store";
 
-const { name } = themeProvider()
-const store = useStore()
+const { name } = themeProvider();
+const store = useStore();
 
 function changePage(pageNumber: number) {
-  store.page = pageNumber
-  store.setPaintings()
+  store.page = pageNumber;
+  store.setPaintings();
 }
-
 </script>
 
 <style scoped lang="scss">

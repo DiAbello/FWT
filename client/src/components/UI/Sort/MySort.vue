@@ -47,17 +47,17 @@ import DropdownItem from "@/components/Filters/DropdownList/DropdownItem.vue";
 import { useStore} from "@/stores/store";
 import InputRange from "@/components/Filters/InputRange/InputRange.vue";
 
-const store = useStore()
-const { name, names } = themeProvider()
-const isSortVisible = ref<boolean>(false)
+const store = useStore();
+const { name, names } = themeProvider();
+const isSortVisible = ref<boolean>(false);
 
 function clearFilters() {
   store.selectedOptions = {};
 }
 
 onMounted(() => {
-  store.setArtists()
-  store.setLocations()
+  store.setArtists();
+  store.setLocations();
 })
 </script>
 

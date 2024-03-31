@@ -25,9 +25,9 @@ import { useStore } from "@/stores/store";
 import GalleryItem from "@/components/GalleryItem/GalleryItem.vue";
 import themeProvider from "@/helpers/setThemeSettings";
 
-const { name } = themeProvider()
-const store = useStore()
-store.setPaintings()
+const { name } = themeProvider();
+const store = useStore();
+store.setPaintings();
 
 </script>
 

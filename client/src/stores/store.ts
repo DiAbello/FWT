@@ -21,23 +21,23 @@ export const useStore = defineStore('store', {
     },
     getters: {
         getSearchedPaintings(state): (k: string) => Painting[] {
-            return (query: string): Painting[] => state.paintings.filter(painting => painting.name.toLowerCase().includes(query.toLowerCase())) as Painting[]
+            return (query: string): Painting[] => state.paintings.filter(painting => painting.name.toLowerCase().includes(query.toLowerCase())) as Painting[];
         },
         getSearchedAndFilteredPaintings(state): Painting[] {
-            let temp = this.getSearchedPaintings(state.searchQuery)
+            let temp = this.getSearchedPaintings(state.searchQuery);
             if (Object.entries(state.selectedOptions).length) {
                 for (const [option, value] of Object.entries(state.selectedOptions)) {
                     temp = temp.filter(painting => {
                         if (typeof value === "string" && painting[option as keyof Painting]) {
-                            return painting[option as keyof Painting] === value
+                            return painting[option as keyof Painting] === value;
                         }
                         if (option === 'years' && typeof value !== 'string') {
-                            return Number(painting.created) > Number(value?.from ?? 0) && Number(painting.created) < Number(value?.to ?? 2077)
+                            return Number(painting.created) > Number(value?.from ?? 0) && Number(painting.created) < Number(value?.to ?? 2077);
                         }
                     })
                 }
             }
-            return temp
+            return temp;
         },
     },
     actions: {
@@ -47,32 +47,32 @@ export const useStore = defineStore('store', {
                     _page: this.page,
                     _limit: this.limit
                 }
-            })
-            this.totalPages = Math.ceil(paintings.headers['x-total-count'] / this.limit)
-            const authors = await $api.get<Author[]>('/authors')
-            const locations = await $api.get<Location[]>('/locations')
+            });
+            this.totalPages = Math.ceil(paintings.headers['x-total-count'] / this.limit);
+            const authors = await $api.get<Author[]>('/authors');
+            const locations = await $api.get<Location[]>('/locations');
             try {
                 paintings.data.forEach((painting, index) => {
                     for (let i = 0; authors.data.length > i; i += 1) {
                         if (painting.authorId === authors.data[i].id) {
-                            const modPainting = painting
-                            modPainting.author = authors.data[i].name
+                            const modPainting = painting;
+                            modPainting.author = authors.data[i].name;
                         }
                     }
                     for (let i = 0; locations.data.length > i; i += 1) {
                         if (painting.locationId === locations.data[i].id) {
-                            const modPainting = painting
-                            modPainting.location = locations.data[i].location
+                            const modPainting = painting;
+                            modPainting.location = locations.data[i].location;
                         }
                     }
                 })
-                this.paintings = paintings.data
+                this.paintings = paintings.data;
             } catch (error) {
-                console.log(error)
+                console.log(error);
             }
         },
         async setArtists() {
-            const authors = await $api.get<Author[]>('/authors')
+            const authors = await $api.get<Author[]>('/authors');
             try {
                 const middleArtists: Options[] = []
                 authors.data.forEach(author => {
@@ -80,27 +80,27 @@ export const useStore = defineStore('store', {
                         value: author.name,
                         name: author.name
                     }
-                    middleArtists.push(newAuthor)
+                    middleArtists.push(newAuthor);
                 })
-                this.sortArtists = middleArtists
+                this.sortArtists = middleArtists;
             } catch (e) {
-                console.log(e)
+                console.log(e);
             }
         },
         async setLocations() {
-            const locations = await $api.get<Location[]>('/locations')
+            const locations = await $api.get<Location[]>('/locations');
             try {
-                const middleLocations: Options[] = []
+                const middleLocations: Options[] = [];
                 locations.data.forEach(location => {
                     const newLocation = {
                         value: location.location,
                         name: location.location
                     }
-                    middleLocations.push(newLocation)
+                    middleLocations.push(newLocation);
                 })
-                this.sortLocations = middleLocations
+                this.sortLocations = middleLocations;
             } catch (e) {
-                console.log(e)
+                console.log(e);
             }
         }
     }

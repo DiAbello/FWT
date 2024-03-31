@@ -21,7 +21,7 @@ enum themeIconUrl {
   logoUrl = '/src/assets/logo/'
 }
 
-const { toggle, name, names } = themeProvider()
+const { toggle, name, names } = themeProvider();
 
 
 </script>

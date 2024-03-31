@@ -14,7 +14,7 @@ import GalleryList from "@/components/GalleryList/GalleryList.vue";
 import FiltersComponent from "@/components/Filters/FiltersComponent.vue";
 import PaginationItem from "@/components/Pagination/PaginationItem.vue";
 
-const { name } = themeProvider()
+const { name } = themeProvider();
 </script>
 
 <style scoped lang="scss">

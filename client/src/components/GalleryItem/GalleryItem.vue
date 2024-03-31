@@ -42,8 +42,8 @@ const props = defineProps({
     required: true
   }
 })
-const baseUrl = 'https://test-front.framework.team'
-const { name } = themeProvider()
+const baseUrl = 'https://test-front.framework.team';
+const { name } = themeProvider();
 </script>
 
 <style scoped lang="scss">
