@@ -23,7 +23,6 @@ enum themeIconUrl {
 
 const { toggle, name, names } = themeProvider();
 
-
 </script>
 
 <style scoped lang="scss">
