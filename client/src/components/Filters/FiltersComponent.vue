@@ -15,7 +15,7 @@
 import MyInput from "@/components/UI/Input/MyInput.vue";
 import MySort from "@/components/UI/Sort/MySort.vue";
 import { useStore } from "@/stores/store";
-import {ref, watch} from "vue";
+import { ref, watch } from "vue";
 
 const store = useStore()
 const paintingTitle = ref('')

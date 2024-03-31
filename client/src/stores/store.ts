@@ -13,12 +13,15 @@ export const useStore = defineStore('store', {
             sortArtists: [] as Options[],
             sortLocations: [] as Options[],
             selectedOptions: {} as SortInterface,
-            searchQuery: ''
+            searchQuery: '',
+            page: 1, // Current Page
+            limit: 6, // Total Items in one page
+            totalPages: 0, // Maximum amount of ceiled pages
         }
     },
     getters: {
         getSearchedPaintings(state): (k: string) => Painting[] {
-            return (query: string): Painting[] => state.paintings.filter(painting => painting.name.toLowerCase().includes(query)) as Painting[]
+            return (query: string): Painting[] => state.paintings.filter(painting => painting.name.toLowerCase().includes(query.toLowerCase())) as Painting[]
         },
         getSearchedAndFilteredPaintings(state): Painting[] {
             let temp = this.getSearchedPaintings(state.searchQuery)
@@ -39,7 +42,13 @@ export const useStore = defineStore('store', {
     },
     actions: {
         async setPaintings() {
-            const paintings = await $api.get<Painting[]>('/paintings',)
+            const paintings = await $api.get<Painting[]>('/paintings', {
+                params: {
+                    _page: this.page,
+                    _limit: this.limit
+                }
+            })
+            this.totalPages = Math.ceil(paintings.headers['x-total-count'] / this.limit)
             const authors = await $api.get<Author[]>('/authors')
             const locations = await $api.get<Location[]>('/locations')
             try {

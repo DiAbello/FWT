@@ -3,6 +3,7 @@
       <HeaderItem/>
       <FiltersComponent/>
       <GalleryList/>
+      <PaginationItem/>
   </div>
 </template>
 
@@ -11,6 +12,7 @@ import HeaderItem from './components/HeaderItem.vue'
 import themeProvider from "@/helpers/setThemeSettings";
 import GalleryList from "@/components/GalleryList/GalleryList.vue";
 import FiltersComponent from "@/components/Filters/FiltersComponent.vue";
+import PaginationItem from "@/components/Pagination/PaginationItem.vue";
 
 const { name } = themeProvider()
 </script>

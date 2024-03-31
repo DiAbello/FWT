@@ -28,21 +28,22 @@
 
 <script setup lang="ts">
 import themeProvider from "@/helpers/setThemeSettings";
-import { EnumLinksInput } from "@/components/UI/Input/EnumLinksInput";
+import {EnumLinksInput} from "@/components/UI/Input/EnumLinksInput";
 import {ref} from "vue";
 
 const props = defineProps({
-    modelValue: {
-      type: String,
-      required: true
-    }
-  })
-  const { name, names } = themeProvider()
-  const isFocused = ref(false)
+  modelValue: {
+    type: String,
+    required: true
+  }
+})
+const {name, names} = themeProvider()
+const isFocused = ref(false)
 
-  const emits = defineEmits([
-      'update:modelValue'
-  ])
+const emits = defineEmits([
+  'update:modelValue'
+])
+
 function clearInput(input: HTMLInputElement) {
   const modInput = input
   modInput.value = ''
@@ -55,6 +56,7 @@ function clearInput(input: HTMLInputElement) {
 .focused {
   border: 1px solid var(--inputBorderFocus) !important;
 }
+
 .myInput {
   user-select: none;
   display: flex;
@@ -70,6 +72,7 @@ function clearInput(input: HTMLInputElement) {
   @media (max-width: 320px) {
     width: 224px;
   }
+
   .input {
     flex: 0 1 90%;
     padding-left: 12px;
@@ -79,6 +82,7 @@ function clearInput(input: HTMLInputElement) {
       max-width: 175px;
     }
   }
+
   .closeIcon {
     width: 12px;
     height: 12px;

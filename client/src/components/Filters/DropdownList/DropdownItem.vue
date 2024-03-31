@@ -5,7 +5,12 @@
         {{sortTitle}}
       </div>
       <div class="item__icon">
-        <img :src="isDropdownActive ? FilterIconsLinks.darkMinus : FilterIconsLinks.darkPlus" alt="" class="iconColor" @click="isDropdownActive = !isDropdownActive">
+        <img
+            :src="isDropdownActive ? FilterIconsLinks.darkMinus : FilterIconsLinks.darkPlus"
+            alt=""
+            class="iconColor"
+            @click="isDropdownActive = !isDropdownActive"
+        >
       </div>
     </div>
     <MySelect

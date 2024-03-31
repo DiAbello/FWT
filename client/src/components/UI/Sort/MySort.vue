@@ -4,7 +4,11 @@
     <div :class="{sortMenu: true, visible: isSortVisible}">
       <div class="sortMenu__body">
         <div class="sortMenu__close">
-          <img :src="name === names.dark ? FilterIconsLinks.darkClose : FilterIconsLinks.whiteClose" alt="" @click="isSortVisible = false">
+          <img
+              :src="name === names.dark ? FilterIconsLinks.darkClose : FilterIconsLinks.whiteClose"
+              alt=""
+              @click="isSortVisible = false"
+          >
         </div>
         <div class="sortMenu__filters filters">
           <div class="filters__body">
@@ -25,7 +29,7 @@
           <div class="footer__show">
             Show the results
           </div>
-          <div class="footer__clear">
+          <div class="footer__clear" @click="clearFilters">
             clear
           </div>
         </div>
@@ -43,10 +47,13 @@ import DropdownItem from "@/components/Filters/DropdownList/DropdownItem.vue";
 import { useStore} from "@/stores/store";
 import InputRange from "@/components/Filters/InputRange/InputRange.vue";
 
-
 const store = useStore()
 const { name, names } = themeProvider()
 const isSortVisible = ref<boolean>(false)
+
+function clearFilters() {
+  store.selectedOptions = {};
+}
 
 onMounted(() => {
   store.setArtists()

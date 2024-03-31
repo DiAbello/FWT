@@ -4,7 +4,7 @@ interface Years {
 }
 
 export interface SortInterface {
-    author: string,
-    location: string,
-    years: Years
+    author?: string,
+    location?: string,
+    years?: Years
 }
